@@ -2,10 +2,10 @@ from dash import Dash, html, dcc, callback, Input, Output
 import numpy as np 
 import pandas as pd 
 import plotly.express as px
+import dash_bootstrap_components as dbc
 
 
-
-app = Dash(__name__)
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP]))
 server = app.server
 
 app.layout = html.H1('Hello World!')
@@ -28,7 +28,7 @@ mylabels = ["Asia", "Africa", "America", "Europe","Oceania"]
 pie_df = {'Continent': mylabels,'GDP': pie_data}
 fig2 = px.pie(pie_df,values="GDP",names="Continent")
 
-return fig, fig2
+return fig, fig2, subset_Country.to_string()
 
 image_path = 'assets/logo-mmu.png'
 
