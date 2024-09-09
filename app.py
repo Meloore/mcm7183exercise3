@@ -25,6 +25,8 @@ mylabels = ["Asia", "Africa", "America", "Europe","Oceania"]
 pie_df = {'Continent': mylabels,'GDP': pie_data}
 fig2 = px.pie(pie_df,values="GDP",names="Continent")
 
+return fig, fig2
+
 image_path = 'assets/logo-mmu.png'
 
 app.layout = [html.H1('MCM7183 Exercise 3'), 
@@ -34,7 +36,9 @@ app.layout = [html.H1('MCM7183 Exercise 3'),
               dcc.Graph(figure=fig2)]
 
 @callout ( Output('graph-scatter', 'figure'),
-    Input('dropdown-country', 'value')
+    Output('graph-pie', 'figure'),
+    Input('dropdown-country', 'value'),
+    Input('dropdown-year', 'value'),
     )
 
 def update_graph(country_selected):
